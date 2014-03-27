@@ -18,6 +18,9 @@ svm_params = dict( kernel_type = cv2.SVM_LINEAR,
 				                        C=1 )
 affine_flags = cv2.WARP_INVERSE_MAP|cv2.INTER_LINEAR
 
+results_filename = './results'
+results_file = open(results_filename, 'w+')
+
 # Function definitions
 def hog(img):
 	gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)
@@ -34,7 +37,7 @@ def hog(img):
 
 
 # Extracting HOG features and labels from training data
-print 'Enter training-label filename : '	
+print 'Enter training-label filename : ',
 label_file = raw_input()
 train_directory, label_file_name = os.path.split(label_file)	
 label_data = open(label_file,'r').readlines()
@@ -59,7 +62,7 @@ svm.train(trainData,labels, params=svm_params)
 svm.save('svm_data.dat')
 
 # Extracting the test data
-print 'Enter test image directory : '
+print 'Enter test image directory : ',
 test_directory = raw_input()
 testData = []
 test_images = []
@@ -74,7 +77,9 @@ for image_name in os.listdir(test_directory):
 testData = np.float32(testData)	
 results = svm.predict_all(testData)
 results = list(results)	
-print 'Results : '
+#print 'Results : '
 for i in range(len(results)):
-  print "Image: "+ test_images[i] + " Class: ", results[i][0]
+#  print "Image: "+ test_images[i] + " Class: ", results[i][0]
+  results_file.write(test_directory + '/' +  test_images[i] + ' ' + str(results[i][0]) + '\n')
 
+results_file.close()
