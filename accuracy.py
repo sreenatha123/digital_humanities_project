@@ -3,13 +3,12 @@
 import sys
 import os
 
-print 'Enter results filename : ',
-results = open(raw_input(), 'r+').readlines()
-print 'Enter test-label filename : ',
-test_labels = open(raw_input(), 'r+').readlines()
-
-#print results
-#print test_labels
+#print 'Enter results filename : ',
+results_filename = 'results'
+results = open(results_filename, 'r+').readlines()
+#print 'Enter test-label filename : ',
+test_labels_filename = 'test_label_file'
+test_labels = open(test_labels_filename, 'r+').readlines()
 
 accuracy = 0.0
 labels = {}
