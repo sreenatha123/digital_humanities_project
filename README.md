@@ -1,7 +1,7 @@
 Digital Humanities Project
 ==========================
 
-Real time classification of art paintings using machine learning principles
+Real time classification of art paintings using machine learning principles.
 The learning model includes an SVM multi-class classifier trained using HOG features.
 
 Instructions
