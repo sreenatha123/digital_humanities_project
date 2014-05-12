@@ -3,13 +3,20 @@
 import os
 import sys
 import shutil
+import random
 
 
 target_dir = './source'
 train_dir = './training'
 test_dir = './test'
-train_count = int(raw_input("Enter train-set size: "))
-test_count = int(raw_input("Enter test-set size: "))
+#train_count = int(raw_input("Enter train-set size: "))
+#test_count = int(raw_input("Enter test-set size: "))
+# Accuracy vs bin-size
+train_count = 18
+test_count = 2
+# Accuracy vs train-set size
+#train_count = int(open('train_size','r').read().strip())
+#test_count = int(open('test_size','r').read().strip())
 train_label_file = open('./train_label_file','w+')
 test_label_file = open('./test_label_file','w+')
 class_encoding_file = open('./class_encoding','r')
@@ -25,8 +32,8 @@ total_train_count = 1
 total_test_count = 1
 styles_dirs = os.listdir(target_dir)
 for style_dir in styles_dirs:
-  print style_dir
   style_files = os.listdir(target_dir + '/' + style_dir)
+  random.shuffle(style_files)
   for i in range(train_count):
     old_address = target_dir + '/' + style_dir + '/' + style_files[i]
     new_address = train_dir + '/image_' + str(total_train_count)

@@ -1,0 +1,14 @@
+
+To plot graph of accuracy vs HOG bin-size:
+
+1. Run 'sh cleanup.sh'
+2. Modify the following files by uncommenting the appropriate lines
+
+	-classifier.py
+	-split_and_rename.py
+	-plot_graph.py
+
+3. Run '$bash accuracy_vs_binsize.sh' (works for bash shell only)
+4. Execute the command '$python plot_graph.py'
+
+

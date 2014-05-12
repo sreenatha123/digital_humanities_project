@@ -11,7 +11,11 @@ import sys
 import os
 
 # Global parameters
-bin_n = int(raw_input("Enter number of bins: ")) # Number of bins
+#bin_n = int(raw_input("Enter number of bins: ")) # Number of bins
+# Accuracy vs bin-size
+bin_n = int(raw_input()) # Number of bins
+# Accuracy vs training-size
+#bin_n = 64
 svm_params = dict( kernel_type = cv2.SVM_LINEAR,
 		                    svm_type = cv2.SVM_C_SVC,
 				                        C=1 )
